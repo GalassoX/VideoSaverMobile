@@ -6,7 +6,7 @@ import 'package:video_saver/data/constants.dart';
 class FbResponse {
   final String original;
   final String sd;
-  final String hd;
+  final String? hd;
   final String title;
   final String thumbnail;
 
