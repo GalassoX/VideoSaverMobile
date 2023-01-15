@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:video_saver/screens/video_response/video_response.dart';
+import 'package:video_saver/utils/fb_fetch.dart';
 import 'package:video_saver/utils/ig_fetch.dart';
 
 class SearchVideo extends StatefulWidget {
@@ -80,14 +81,24 @@ class _SearchVideoState extends State<SearchVideo> {
           );
         });
 
-    IgResponse r = await fetchInstagramVideo(searchController.text);
+    String url = '';
+    if (searchController.text.contains(urlChecks[0])) {
+      // Facebook
+      FbResponse r = await fetchFacebookVideo(searchController.text);
+      url = r.hd ?? r.sd;
+    } else if (searchController.text.contains(urlChecks[1])) {
+      //Instagram
+      IgResponse r = await fetchInstagramVideo(searchController.text);
+      url = r.url;
+    }
+
     Navigator.of(context).pop();
 
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => VideoResponse(
-          url: r.url,
+          url: url,
         ),
       ),
     );
