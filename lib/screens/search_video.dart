@@ -50,13 +50,6 @@ class _SearchVideoState extends State<SearchVideo> {
               child: Text(textSearchButton),
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) =>
-                  //         VideoResponse(videoUrl: searchController.text),
-                  //   ),
-                  // );
                   _fetchVideo(context);
                 }
               },
@@ -76,7 +69,6 @@ class _SearchVideoState extends State<SearchVideo> {
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 20),
               child: Column(
-                // mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: const [
                   CircularProgressIndicator(),
